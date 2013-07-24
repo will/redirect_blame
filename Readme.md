@@ -3,7 +3,7 @@ a.k.a. zero blametime deploys
 
 See it in action at http://bitfission.com/redirect_blame
 
-My site isn't down, your internet connection isn't working. This index.html file proves it.  Set it as your error page, and your users will be non-the-wiser that you're site is down.
+My site isn't down, your internet connection isn't working. This index.html file proves it. Zero-downtime deploys are hard—why bother when youcan trick your users into thinking their internet is a little flaky? Set it as your error page, and your users will be non-the-wiser that you're site is down.
 
 On heroku:
 
