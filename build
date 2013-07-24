@@ -5,7 +5,13 @@ File.open('index.html', 'w') do |f|
 
   Dir.glob('pages/*').each do |path|
     name = path.scan(/(\w+).html/).first.first
-    encoded = Base64.strict_encode64(File.read(path))
+    file = File.read(path)
+    if name =='safari'
+     file.gsub!(/url\((.*)\)/) do |match|
+       "url(data:image/gif;base64," + Base64.strict_encode64(File.read("//Applications/Safari.app/Contents/Resources/#{$1}")) + ')'
+      end
+    end
+    encoded = Base64.strict_encode64(file)
     f << %Q(#{name} = "#{encoded}")
     f << "\n\n"
   end
