@@ -2,133 +2,152 @@
   <head>
     <title>Problem loading page</title>
     <style>
-    /*
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*
  *  This defines the look-and-feel styling of the error pages.
  *  (see: netError.xhtml)
  *
  *  Original styling by William Price <bugzilla@mob.rice.edu>
- *  Updated for mobile by: Wes Johnston <wjohnston@mozilla.com>
+ *  Updated by: Steven Garrity <steven@silverorange.com>
+ *              Henrik Skupin  <mozilla@hskupin.info>
  */
+
+html {
+  background: -moz-Dialog;
+}
 
 body {
   margin: 0;
-  padding: 0 8px 8px;
-  font-family: "Nokia Sans", Tahoma, sans-serif !important;
+  padding: 0 1em;
+  color: -moz-FieldText;
+  font: message-box;
 }
 
 h1 {
-  font-size: 22px;
+  margin: 0 0 .6em 0;
+  border-bottom: 1px solid ThreeDLightShadow;
+  font-size: 160%;
 }
 
-h2 {
-  font-size: 16px;
+ul, ol {
+  margin: 0;
+  -moz-margin-start: 1.5em;
+  padding: 0;
+}
+
+ul > li, ol > li {
+  margin-bottom: .5em;
 }
 
 ul {
-  margin: 0px;
-  padding: 0px 0px 0px 1em;
-}
-
-li {
-  margin: 0px;
-  padding: 8px 0px;
-}
-
-#errorPage {
-  background-color: #CEE6F4;
-}
-
-#errorPage.certerror {
-  background-color: #EFD400;
-}
-
-#errorPage.blockedsite {
-  background-color: #BF0000;
-}
-
-#errorTitle {
-  background: url("chrome://browser/skin/images/errorpage-warning.png") left center no-repeat;
-  /* Scaled by .666 of their actual size */
-  background-size: 40px 40px;
-  background-origin: content-box;
-  min-height: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#errorPage.certerror #errorTitle {
-  background-image: url("chrome://browser/skin/images/errorpage-larry-black.png");
-}
-
-#errorPage.blockedsite #errorTitle {
-  background-image: url("chrome://browser/skin/images/errorpage-larry-white.png");
-  color: white;
-}
-
-.errorTitleText {
-  padding: 0px 0px 0px 50px;
-  display: inline-block;
-  vertical-align: middle
+  list-style: square;
 }
 
 #errorPageContainer {
-  background-color: white;
-  border: 1px solid #999999;
-  border-radius: 6px;
-  padding: 6px 20px 20px;
-  font-size: 14px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  min-width: 13em;
+  max-width: 52em;
+  margin: 4em auto;
+  border: 1px solid ThreeDShadow;
+  border-radius: 10px;
+  padding: 3em;
+  -moz-padding-start: 30px;
+  background: url("chrome://global/skin/icons/warning-large.png") left 0 no-repeat -moz-Field;
+  background-origin: content-box;
 }
 
-#errorShortDesc > p:empty {
-  display: none;
+#errorPageContainer.certerror {
+  background-image: url("chrome://global/skin/icons/sslWarning.png");
+}
+
+#errorPageContainer:-moz-dir(rtl) {
+  background-position: right 0;
+}
+
+#errorTitle {
+  -moz-margin-start: 80px;
+}
+
+#errorLongContent {
+  -moz-margin-start: 80px;
 }
 
 #errorShortDesc > p {
   overflow: auto;
-  border-bottom: 1px solid #999999;
+  border-bottom: 1px solid ThreeDLightShadow;
   padding-bottom: 1em;
+  font-size: 130%;
+  white-space: pre-wrap;
 }
 
-#errorPage.blockedsite #errorShortDesc > p {
-  font-weight: bold;
-  border-bottom: none;
-  padding-bottom: 0px;
+#errorLongDesc {
+  -moz-padding-end: 3em;
+  font-size: 110%;
+}
+
+#errorLongDesc > p {
+}
+
+#errorTryAgain {
+  margin-top: 2em;
+  -moz-margin-start: 80px;
+}
+
+#brand {
+  position: absolute;
+  right: 0;
+  bottom: -1.5em;
+  -moz-margin-end: 10px;
+  opacity: .4;
+}
+
+#brand:-moz-dir(rtl) {
+  right: auto;
+  left: 0;
+}
+
+#brand > p {
+  margin: 0;
+}
+
+#errorContainer {
+  display: none;
 }
 
 #securityOverrideDiv {
   padding-top: 10px;
 }
 
-div[collapsed] {
-  padding-left: 15px;
-  background-image: url("chrome://browser/skin/images/arrowright-16.png");
-  background-size: 11px 11px;
-  background-repeat: no-repeat;
-  background-position: left 0.3em;
+#securityOverrideContent {
+  background-color: #FFF090; /* Pale yellow */
+  padding: 10px;
+  border-radius: 10px;
 }
 
-div[collapsed="true"] {
-  background-image: url("chrome://browser/skin/images/arrowright-16.png");
+/* Custom styling for 'blacklist' error class */
+:root.blacklist #errorTitle, :root.blacklist #errorLongContent,
+:root.blacklist #errorShortDesc, :root.blacklist #errorLongDesc,
+:root.blacklist a {
+  background-color: #722; /* Dark red */
+  color: white;
 }
 
-div[collapsed="false"] {
-  background-image: url("chrome://browser/skin/images/arrowdown-16.png");
+:root.blacklist #errorPageContainer {
+  background-image: url("chrome://global/skin/icons/blacklist_64.png");
+  background-color: #722;
 }
 
-div[collapsed="true"] > p,
-div[collapsed="true"] > div {
+:root.blacklist {
+  background: #333;
+}
+
+:root.blacklist #errorTryAgain {
   display: none;
 }
 
-button {
-  padding: 0.3em !important;
-}
 </style>
     <!-- If the location of the favicon is changed here, the FAVICON_ERRORPAGE_URL symbol in
         toolkit/components/places/src/nsFaviconService.h should be updated. -->
