@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'base64'
+File.open('index.html', 'w') do |f|
+  f << File.read('before.tmpl')
+
+  Dir.glob('pages/*').each do |path|
+    name = path.scan(/(\w+).html/).first.first
+    encoded = Base64.strict_encode64(File.read(path))
+    f << %Q(#{name} = "#{encoded}")
+    f << "\n\n"
+  end
+
+  f << File.read('after.tmpl')
+end
+

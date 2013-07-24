@@ -1,0 +1,21 @@
+
+
+function swap(browser) {
+  console.log(browser)
+  var code
+  if (browser === 'Chrome') {
+    code = chrome
+  } else if (browser === 'Safari') {
+    code = safari
+  } else if (browser === 'Firefox') {
+    code = firefox
+  }
+  document.getElementsByTagName("html")[0].innerHTML = atob(code)
+}
+
+
+swap(BrowserDetect.browser)
+
+</script>
+
+</html>
