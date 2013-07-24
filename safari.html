@@ -1,0 +1,46 @@
+<!-- LOCALIZERS: Each localizable piece of the page is marked with a comment -->
+
+<HTML>
+<!-- LOCALIZERS: If in a right-to-left locale, add dir="rtl" to the HTML element. -->
+<HEAD>
+    <LINK rel=stylesheet type="text/css" href="file:///Applications/Safari.app/Contents/Resources/page-load-errors.css">
+    <!-- LOCALIZERS: You might want to change the font family. You can also add styles to override sizes, etc. -->
+    <STYLE>
+        BODY {font-family:'Helvetica Neue';}
+    </STYLE>
+
+    <!-- LOCALIZERS: The next line contains the page title that appears in the window's title bar -->
+    <TITLE>Failed to open page</TITLE>
+
+</HEAD>
+
+<BODY>
+<div class="error-container">
+<div class="icon" role="img" alt="Safari Icon"></div>
+
+<div class="text-container">
+<!-- main title here, repeated 3 times -->
+<P aria-hidden="true" class="error-title error-text-engraving">You are not connected to the Internet <A id="help-button"></a></P>
+<P aria-hidden="true" class="error-title error-text">You are not connected to the Internet <A id="help-button"></a></P>
+<P class="error-title error-text-inner-shadow">You are not connected to the Internet <A aria-label="Help" role="button" id="help-button" class="" HREF='open-help-anchor:ibrwa007'></a></P>
+</div>
+<div class="text-container">
+<!-- error message here, repeated 3 times -->
+<P class="error-message error-text-engraving">This page can’t be displayed because your computer is currently offline</P>
+<P aria-hidden="true" class="error-message error-text">This page can’t be displayed because your computer is currently offline</P>
+<P aria-hidden="true" class="error-message error-text-inner-shadow">This page can’t be displayed because your computer is currently offline</P>
+</div>
+</div>
+
+<div class="suggestion-container">
+<div class="text-container">
+<!-- LOCALIZERS: localize the prompt (repeated 3 times) and the button title. -->
+<p class="suggestion-prompt error-text-engraving"><span class="reading-list-glasses" alt="Safari Reading List Icon" role="img"></span>Reading List articles are available for viewing while you are offline.</p>
+<p aria-hidden="true" class="suggestion-prompt error-text"><span class="reading-list-glasses" alt="Safari Reading List Icon" role="img"></span>Reading List articles are available for viewing while you are offline.</p>
+<p aria-hidden="true" class="suggestion-prompt error-text-inner-shadow"><span class="reading-list-glasses" alt="Safari Reading List Icon" role="img"></span>Reading List articles are available for viewing while you are offline.</p>
+</div>
+<form class="suggestion-form" method=GET action='show-reading-list:'><input type=submit value='Show Reading List'></form>
+</div>
+</BODY>
+
+</HTML>
