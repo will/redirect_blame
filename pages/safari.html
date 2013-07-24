@@ -1,15 +1,252 @@
-<!-- LOCALIZERS: Each localizable piece of the page is marked with a comment -->
-
 <HTML>
-<!-- LOCALIZERS: If in a right-to-left locale, add dir="rtl" to the HTML element. -->
 <HEAD>
-    <LINK rel=stylesheet type="text/css" href="file:///Applications/Safari.app/Contents/Resources/page-load-errors.css">
-    <!-- LOCALIZERS: You might want to change the font family. You can also add styles to override sizes, etc. -->
     <STYLE>
         BODY {font-family:'Helvetica Neue';}
+       /*
+    This file has a UTF-8 BOM in it so it can be included from a UTF-16 page
+    without specifying an explicit character set. When editing it, please be
+    sure to preserve the BOM (first three bytes of the file, EF BB BF).
+ */
+
+body {
+    background-color: rgb(237, 239, 238);
+    background-image: url(ErrorPageBackgroundTile.png);
+    background-size: 100px 100px;
+    text-align: center;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.error-container {
+    margin-top: 128px;
+    padding-top: 0;
+}
+
+.error-container, .suggestion-container, .action-container {
+    position: relative;
+    width: 500px;
+    min-height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 93px;
+    padding-right: 93px;
+    padding-bottom: 0;
+}
+
+.suggestion-container {
+    margin-top: 25px;
+    padding-top: 20px;
+    background: url(ErrorPageDividerLine.png) top center no-repeat;
+    background-size: 686px 1px;
+}
+
+.icon {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 113px;
+    height: 120px;
+    background-image: url(ErrorPageCompass.png);
+    background-repeat: no-repeat;
+    background-size: 113px 120px;
+}
+
+.reading-list-glasses {
+    display: inline-block;
+
+    position: relative;
+    top: 2px;
+
+    margin-right: 8px;
+
+    width: 35px;
+    height: 16px;
+    background-image: url(ErrorPageReadingList.png);
+    background-repeat: no-repeat;
+    background-size: 35px 16px;
+}
+
+.error-text-engraving .reading-list-glasses, .error-text-inner-shadow .reading-list-glasses {
+    /* Hide the duplicate Reading List glasses that are next to the envgraving and the shadow of the
+    inner text. The images are just there for horizontal spacing of the components of the error text,
+    we don't want to show them. */
+    visibility: hidden;
+}
+
+html[dir=rtl] .icon {
+    left: auto;
+    right: 7px;
+}
+
+.text-container {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.error-text, .error-text-engraving, .error-text-inner-shadow
+{
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.error-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error-text-engraving {
+    position: relative;
+    top: 1px;
+    width: 100%;
+    color: white;
+}
+
+.error-text-inner-shadow {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    right: 0;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.error-title
+{
+    font-size: 18px;
+    line-height:24px; /* This needs to be the same as the 2nd color stop position in -webkit-repeating-linear-gradient of error-title.error-text. */
+    font-weight: bold;
+}
+
+.error-title.error-text {
+    /* the position for rgba(124, 128, 130, 0.9) needs to be the same as the line-height in .error-title */
+    background-image: -webkit-repeating-linear-gradient(rgba(79, 82, 85, 0.9) 0, rgba(124, 128, 130, 0.9) 24px), url(ErrorPageBackgroundTile.png);
+}
+
+.error-title.error-text-engraving {
+    margin-top: 22px;
+    margin-bottom: 25px;
+}
+
+.suggestion-form input
+{
+    font-size: 16px;
+    margin: 0;
+}
+
+.suggestion-prompt
+{
+    margin-bottom: 12px;
+}
+
+.suggestion-prompt, .error-message {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.suggestion-prompt.error-text, .error-message.error-text {
+    background-color: rgba(101, 105, 107, 0.9);
+}
+
+.suggestion-prompt.error-text-engraving {
+    padding-bottom: 0px;
+    margin-top: 6px;
+}
+
+.action-container {
+    margin-top: 8px;
+}
+
+.action-container .suggestion-form {
+    display: inline-block;
+    margin: 5px;
+    padding: 0;
+}
+
+.action-container .suggestion-form input {
+    width: 132px;
+    margin: 0;
+}
+
+.error-text a, .error-text-inner-shadow a {
+    visibility: hidden;
+}
+
+.error-text-engraving a {
+    z-index: 1;
+    position: relative;
+    top: -1px;
+}
+
+#help-button {
+    display: inline-block;
+
+    width: 25px;
+    height: 24px;
+    vertical-align: bottom;
+    background-image: url(HelpButton.png);
+    background-repeat: no-repeat;
+    background-size: 25px 24px;
+    -webkit-user-drag: none;
+
+    margin-right: -35px;
+    visibility: visible;
+}
+
+.error-text-engraving #help-button, .error-text #help-button {
+    background-image: none;
+    visibility: hidden;
+}
+
+#help-button:active {
+    background-image: url(HelpButtonPressed.png);
+}
+
+html[dir=rtl] #help-button {
+    margin-right: inherit;
+    margin-left: -35px;
+}
+
+@media (-webkit-min-device-pixel-ratio:2) {
+    body {
+        background-image: url(ErrorPageBackgroundTile@2x.png);
+    }
+
+    .suggestion-container {
+        background-image: url(ErrorPageDividerLine@2x.png);
+    }
+
+    .icon {
+        background-image: url(ErrorPageCompass@2x.png);
+    }
+
+    .reading-list-glasses {
+        background-image: url(ErrorPageReadingList@2x.png);
+    }
+
+    .error-title.error-text {
+        /* the position for rgba(124, 128, 130, 0.9) needs to be the same as the line-height in .error-title */
+        background-image: -webkit-repeating-linear-gradient(rgba(79, 82, 85, 0.9) 0, rgba(124, 128, 130, 0.9) 24px), url(ErrorPageBackgroundTile@2x.png);
+    }
+
+    #help-button {
+        background-image: url(HelpButton@2x.png);
+    }
+
+    #help-button:active {
+        background-image: url(HelpButtonPressed@2x.png);
+    }
+}
+
     </STYLE>
 
-    <!-- LOCALIZERS: The next line contains the page title that appears in the window's title bar -->
     <TITLE>Failed to open page</TITLE>
 
 </HEAD>
