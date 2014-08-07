@@ -15,7 +15,7 @@ On heroku:
 
 My site isn't down, your internet connection isn't working! This index.html file proves it.
 
-Currently supports chrome, safari, and firefox. Other error pages welcome
+Currently supports chrome, safari, ie11, and firefox. Other error pages welcome
 
 ## Thanks
 
