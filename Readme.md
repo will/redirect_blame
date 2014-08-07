@@ -20,3 +20,4 @@ Currently supports chrome, safari, and firefox. Other error pages welcome
 ## Thanks
 
 * Dan Farina
+* Bailey Parker
