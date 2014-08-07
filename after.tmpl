@@ -12,6 +12,8 @@ function swap(browser) {
     code = safari
   } else if (browser === 'Firefox') {
     code = firefox
+  } else if (navigator.userAgent.indexOf('MSIE') === -1 && navigator.appVersion.indexOf('Trident/') !== -1) {
+    code = ie11
   }
   document.getElementsByTagName("html")[0].innerHTML = Base64.decode(code)
 }
